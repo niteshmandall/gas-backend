@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Service Requests</title>
+
+    <!-- Add this line to load static files -->
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Track Your Service Requests</h1>
+
+    {% if requests %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Request Type</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Resolved At</th>
+                    <th>Customer ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                    <tr>
+                        <td>{{ request.id }}</td>
+                        <td>{{ request.request_type }}</td>
+                        <td>{{ request.description }}</td>
+                        <td>{{ request.status }}</td>
+                        <td>{{ request.created_at }}</td>
+                        <td>{{ request.resolved_at }}</td>
+                        <td>{{ request.customer.id }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no service requests.</p>
+    {% endif %}
+
+</body>
+</html>

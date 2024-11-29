@@ -1,0 +1,13 @@
+<!-- update_status.html -->
+<h1>Update Status for "{{ service_request.title }}"</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="status">Status:</label>
+    <select name="status" id="status">
+        <option value="Open" {% if service_request.status == 'Open' %}selected{% endif %}>Open</option>
+        <option value="In Progress" {% if service_request.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+        <option value="Resolved" {% if service_request.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+        <option value="Closed" {% if service_request.status == 'Closed' %}selected{% endif %}>Closed</option>
+    </select>
+    <button type="submit">Update Status</button>
+</form>

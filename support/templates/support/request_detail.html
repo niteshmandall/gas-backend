@@ -1,0 +1,25 @@
+<!-- request_detail.html -->
+<h1>{{ service_request.title }}</h1>
+<p>{{ service_request.description }}</p>
+<p>Status: {{ service_request.status }}</p>
+{% if service_request.resolved_at %}
+    <p>Resolved At: {{ service_request.resolved_at }}</p>
+{% endif %}
+
+<h2>Comments</h2>
+<ul>
+    {% for comment in comments %}
+        <li>
+            <strong>{{ comment.created_by.username }}</strong> on {{ comment.created_at }}: {{ comment.text }}
+        </li>
+    {% endfor %}
+</ul>
+
+<h3>Add a Comment</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Comment</button>
+</form>
+
+<a href="{% url 'update_request_status' request_id=service_request.id %}">Update Status</a>
