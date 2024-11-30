@@ -1,5 +1,5 @@
 
-# **Customer Support Management System**
+# **Customer Support Management System : Bynry Inc Assignment**
 
 This Django-based web application is designed to handle customer support requests efficiently. The application provides features for customers to submit and track their requests, while support representatives can manage and resolve these requests. 
 
