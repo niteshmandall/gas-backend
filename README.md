@@ -44,23 +44,18 @@ This Django-based web application is designed to handle customer support request
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Apply Migrations**
+3. **Apply Migrations**
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-5. **Create Superuser (Admin)**
+4. **Create Superuser (Admin)**
    ```bash
    python manage.py createsuperuser
    ```
 
-6. **Run the Development Server**
+5. **Run the Development Server**
    ```bash
    python manage.py runserver
    ```
