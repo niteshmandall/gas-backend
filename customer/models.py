@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class ServiceRequest(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Pending'),
@@ -20,3 +21,11 @@ class ServiceRequest(models.Model):
         return f"{self.customer.username} - {self.request_type}"
 
 
+class RequestComment(models.Model):
+    service_request = models.ForeignKey(ServiceRequest, related_name='comments', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.created_by.username} on {self.service_request}"

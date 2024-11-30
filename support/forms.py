@@ -1,10 +1,11 @@
 from django import forms
-from .models import RequestComment  # Import the RequestComment model
+from customer.models import RequestComment
+
 
 class RequestCommentForm(forms.ModelForm):
-    """
-    Form to handle creating comments on service requests.
-    """
     class Meta:
         model = RequestComment
-        fields = ['text']  # Assuming 'text' is the field for the comment text
+        fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Add a comment...'}),
+        }

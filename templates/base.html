@@ -1,0 +1,8 @@
+{% if request.user.is_authenticated %}
+    {% if request.user.groups.filter(name='Customer').exists() %}
+        <a href="{% url 'submit_request' %}">Submit Request</a>
+        <a href="{% url 'track_request' %}">Track Requests</a>
+    {% elif request.user.groups.filter(name='Support').exists() %}
+        <a href="{% url 'manage_requests' %}">Manage Requests</a>
+    {% endif %}
+{% endif %}

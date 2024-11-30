@@ -2,31 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Service Requests</title>
+    <title>Manage Requests</title>
 </head>
 <body>
     <h1>Manage Service Requests</h1>
-    {% if requests %}
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for request in requests %}
-                <tr>
-                    <td>{{ request.id }}</td>
-                    <td>{{ request.description }}</td>
-                    <td>{{ request.status }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No service requests found.</p>
-    {% endif %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Request Type</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.request_type }}</td>
+                <td>{{ request.status }}</td>
+                <td><a href="{% url 'request_detail' request.id %}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

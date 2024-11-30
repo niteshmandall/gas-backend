@@ -1,25 +1,33 @@
-<!-- request_detail.html -->
-<h1>{{ service_request.title }}</h1>
-<p>{{ service_request.description }}</p>
-<p>Status: {{ service_request.status }}</p>
-{% if service_request.resolved_at %}
-    <p>Resolved At: {{ service_request.resolved_at }}</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Details</title>
+</head>
+<body>
+    <h1>Request Details</h1>
+    <h2>{{ service_request.request_type }}</h2>
+    <p>{{ service_request.description }}</p>
+    <p>Status: {{ service_request.status }}</p>
+    <p>Created at: {{ service_request.created_at }}</p>
+    <p>Resolved at: {{ service_request.resolved_at }}</p>
 
-<h2>Comments</h2>
-<ul>
-    {% for comment in comments %}
+    <h3>Comments</h3>
+    <ul>
+        {% for comment in comments %}
         <li>
-            <strong>{{ comment.created_by.username }}</strong> on {{ comment.created_at }}: {{ comment.text }}
+            <strong>{{ comment.created_by }}:</strong> {{ comment.text }}
+            <br>
+            <small>Posted on: {{ comment.created_at }}</small>
         </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
 
-<h3>Add a Comment</h3>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Comment</button>
-</form>
-
-<a href="{% url 'update_request_status' request_id=service_request.id %}">Update Status</a>
+    <h4>Add a Comment</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
