@@ -132,3 +132,12 @@ customer-support-system/
 - Enhance UI with modern frameworks like React or Vue.js.
 
 ---
+
+## Some Default User IDs and Pass for testing :
+
+- Customer - Username : customer, Pass : user@123
+- Support  - Username : support , Pass : admin@123
+
+---
+
+ 
